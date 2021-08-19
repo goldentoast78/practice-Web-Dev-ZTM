@@ -10,7 +10,7 @@ body, html{
   }
 h1{
     font-size: 4rem;
-    color: #2211b9;
+    color: rgb(187, 23, 17);
 }
 hr{
     border-top: 5px solid rgb(184, 67, 21);
