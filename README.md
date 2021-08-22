@@ -1,2 +1,3 @@
 # practice-Web-Dev-ZTM
-for practice
+It' mainly keep the practice work of "Web Dev ZTM"
+I hope that finshing whole course and get hired in 6 month.(start 2021/07/12)
