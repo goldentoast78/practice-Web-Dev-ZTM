@@ -1,12 +1,19 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import Hello from './Hello';
+import Card from './Card';
 import reportWebVitals from './reportWebVitals';
 import 'tachyons' ;
+import {robots} from './robots'
+
 ReactDOM.render(
   <React.StrictMode>
-    <Hello greeting ={'Hello '+ 'React ninja'}/>
+    <div>
+    <Card id = {robots[0].id} name = {robots[0].name} email = {robots[0].email} greeting ={'Hello '+ 'React ninja'}/>
+    <Card id ={robots[1].id} name = {robots[1].name} email = {robots[1].email} greeting ={ 'Hello '+ 'React worrior'}/>
+    <Card id = {robots[2].id} name = {robots[2].name} email = {robots[2].email}greeting ={ 'Hello '+ 'React soilder'}/>
+    <Card id = {robots[3].id} name = {robots[3].name} email = {robots[3].email}greeting ={ 'Hello '+ 'React God'}/>
+    </div>
   </React.StrictMode>,
   document.getElementById('root')
 );
