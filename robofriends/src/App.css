@@ -6,5 +6,8 @@
 }
 
 h1 {
-    font-family: 'SEGA LOGO FONT';   
+    font-family: "SEGA LOGO FONT";
+    margin: 0;
+    height: auto;
+    
 }
