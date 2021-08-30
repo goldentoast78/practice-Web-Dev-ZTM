@@ -4,6 +4,7 @@ import CardList from "../components/CardList";
 import SearchBox from "../components/SearchBox";
 import './App.css';
 import Scroll from '../components/Scroll';
+import ErrorBoundry from '../components/ErrorBoundry'
 class App extends Component {
     constructor() {
         super()//why need this
@@ -11,13 +12,13 @@ class App extends Component {
             robots: [],
             searchfield: ''
         }
-        console.log('a');        
+        // console.log('a');        
     }
     componentDidMount() {
         fetch('http://jsonplaceholder.typicode.com/users')
         .then(Response=> Response.json())
         .then(users=> this.setState({robots: users}));        
-        console.log('b');
+        // console.log('b');
     }
 
 
@@ -26,26 +27,27 @@ class App extends Component {
         console.log(event.target.value);
     }
     render() {
-        const filteredRobots = this.state.robots.filter(robots =>{
-            return robots.name.toLocaleLowerCase().includes(this.state.searchfield.toLocaleLowerCase());
+        const {robots,searchfield} = this.state;
+        const filteredRobots = robots.filter(robot =>{
+            return robot.name.toLocaleLowerCase().includes(searchfield.toLocaleLowerCase());
         })
-        console.log('c');
-        console.log(filteredRobots);
-        if (this.state.robots.length === 0) {
-            return <h1>加載中</h1>
-        } else{
-            return (
-                <div className="tc">
-                    <h1 className='f1'>Robofriends</h1>
-                    <SearchBox searchChange={this.onSearchChange}/>
-                    <Scroll>
-                        <CardList robots = {filteredRobots} />
-                    </Scroll>                    
+        // console.log('c');
+        // console.log(filteredRobots);
+            return !robots.length ?
+             <h1>加載中</h1> :
+             (
+                 <div className="tc">
+                        <h1 className='f1'>Robofriends</h1>
+                        <SearchBox searchChange={this.onSearchChange}/>
+                        <Scroll>
+                            <ErrorBoundry>
+                                <CardList robots = {filteredRobots} />
+                            </ErrorBoundry>
+                        </Scroll>                    
                 </div>
-            );
-        }
-
+            )
     }
+
 }
 
 export default App;
