@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import API from './API';
+import API from '../api-test/src/API';
 // import CardList from './CardList';
 // import Card from './Card';
 import reportWebVitals from './reportWebVitals';
