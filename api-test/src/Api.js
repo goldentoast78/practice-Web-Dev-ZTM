@@ -1,25 +1,31 @@
 import React from 'react';
-// import './Card.css';
+import Character from './Character';
 
 // 輸入資料 
 // 加入api 
 // 顯示
 
-const urls = "https://swapi.py4e.com/api/people/{searchfield}/";
   
-const getData = async function () {
-    try {
-      const [users, posts, albums] = await Promise.all(
-        urls.map(async function (url) {
-          const response = await fetch(url);
-          return response.json();
-        }),
+const Api = ({starwarers}) =>{    
+  if (false){
+      throw  new Error('Nooooo!');
+  }
+  return (
+      <div >
+      {
+          starwarers.map((user,i) =>{
+          return (
+          <Character           
+          key = {i }
+          name = {starwarers[i].name} 
+          height = {starwarers[i].height} 
+          brith_year = {starwarers[i].brith_year}
+          />                       
       );
-      console.log("users", users);
-      console.log("posta", posts);
-      console.log("albums", albums);
-    } catch (err) {
-      console.log("ooooooops", err);
-    }
-};
+      })
+      }
+      </div>
+  );
+}
+
 export default Api;

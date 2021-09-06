@@ -8,15 +8,15 @@ class App extends Component {
   constructor() {
       super()//why need this
       this.state ={
-          starwarer: [],
+          starwarers: [],
           searchfield: ''
       }
   }
 
   componentDidMount() {
-      fetch('https://swapi.py4e.com/api/people/{searchfield}/')
+      fetch('http://swapi.py4e.com/api/people/1/')
       .then(Response=> Response.json())
-      .then(users=> this.setState({starwarer: users}));
+      .then(users=> this.setState({starwarers: users}));
   }
 
   onSearchChange = (event) => {
@@ -24,14 +24,17 @@ class App extends Component {
       console.log(event.target.value);
   }
   render() {
-      const {starwarer,searchfield} = this.state;
-      return !starwarer.length ?
+      const {starwarers,searchfield} = this.state;
+      const filteredswer= starwarers.filter(starwarer =>{
+        return starwarer.name.toLocaleLowerCase().includes(searchfield.toLocaleLowerCase());
+    })
+      return !starwarers.length ?
           <h1>加載中</h1> :
            (
           <div className="tc">
               <h1 className='f1'>startwar_friends</h1>
               <SearchBox searchChange={this.onSearchChange}/>                          
-              <Api starwarer = {filteredswer} />                                                <CardList robots = {filteredRobots} />                                      
+              <Api starwarer = {filteredswer} />                                   
           </div>
           )
   }
